@@ -3,23 +3,357 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "compass/reset";
+@import "compass";
 @import "normalize";
 
 
 
-/* ********* */
 /* Variables */
-/* ********* */
 
+$dark-k: #2c3135;
+$med-k: #4a5459;
+$lt-k: #A0ABB2;
+$red: #E26A58;
+$dark-red: #D5645A;
+$orange: #FFA02F;
+$green: #47A447;
+$blue: #00AFD8;
 
-/* *************** */
+/* Mix-ins */
+
+@mixin widget() {
+	@include border-radius(3px);
+	background-color: #fff;
+	border-style: solid;
+	border-width: 1px 2px 2px 1px;
+	border-color: #D3D3D3;
+	margin-bottom: 20px;
+}
+
 /* Begin My Styles */
-/* *************** */
 
+* { box-sizing: border-box }
+
+html {
+	font-size: 16px;
+}
 
 body {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 16px;
-	background-color: #eee;
+	color: #4a5459;
+	background-color: #F3F2EF;
+	// background-image: url(../images/texture.png);
+	padding: 20px;
+	margin-bottom: 50px;
+	@include text-shadow(#fff 0px 1px 0);
+}
+
+#wrapper {
+	position: relative;
+	width: 100%;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+header {
+	position: fixed;
+	top: 12px;
+	left: 30px;
+	z-index: 10;
+
+	h1 {
+		color: $dark-k;
+		font-size: 3rem;
+		font-family: Ultra, sans-serif;
+		margin: 0;
+		@include text-shadow(none);
+	}
+}
+
+#mainstage {
+	position: relative;
+	@include pie-clearfix;
+}
+
+section {
+	width: calc(50% - 20px);
+
+	h1 {
+		font-size: 1.5rem;
+		margin-top: 0;
+		font-weight: normal;
+	}
+
+	h2, h3, h4, h5, h6 {
+		font-size: 1rem;
+		margin-top: 0;
+	}
+
+	h3 {
+		font-weight: normal;
+	}
+}
+
+a {
+	color: $blue;
+	text-decoration: none;
+}
+
+a:hover {
+	color: darken($blue, 10%);
+	text-decoration: underline;
+}
+
+.button {
+	@include border-radius(3px);
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+	@include text-shadow(none);
+	background-color: $red;
+	padding: 3px 10px 3px 10px;
+	@include transition-duration(500ms);
+}
+
+.button:hover, .button:focus {
+	color: #fff;
+	text-decoration: none;
+	background-color: $dark-red;
+}
+
+.button:focus {
+	outline: none;
+	@include box-shadow(rgba(0,0,0,0.8) 0 0 3px);
+}
+
+.example {
+	white-space: nowrap;
+}
+
+.demo {
+	background-color: #fff;
+	font-family: monospace;
+	padding: 10px;
+	border: 1px solid #ccc;
+	@include border-radius(3px);
+
+	div {
+		text-align: right;
+		.button {
+			display: inline-block;
+			font-family: 'Open Sans', sans-serif;
+			clear: both;
+		}
+	}
+}
+
+.roll_result {
+	@include widget;
+	position: relative;
+
+	h2 {
+		background-color: $blue;
+		color: #fff;
+		font-weight: normal;
+		@include text-shadow(none);
+		padding: 5px 10px;
+		@include border-top-radius(2px);
+		margin: 0;
+	}
+
+	.result_body {
+		display: table;
+		
+		
+
+		dl.sum {
+			position: relative;
+			display: table-cell;
+			vertical-align: middle;
+			background-color: #f4f4f4;
+			list-style: none;
+			margin: 0;
+			padding: 10px 20px;
+			text-align: center;
+			border-right: 1px solid #fff;
+
+			dt, dd {
+				display: block;
+				width: 100%;
+			}
+
+			dt {
+				position: absolute;
+				bottom: 10px;
+				left: 0;
+				font-size: 0.8rem;
+				line-height: 0.8rem;
+				color: $lt-k;
+			}
+
+			dd {
+				margin-left: 0;
+				font-size: 3rem;
+				line-height: 3rem;
+				padding-bottom: 20px;
+			}
+		}
+
+		dl.single_roll {
+			position: relative;
+			float: left;
+			background-color: #f4f4f4;
+			list-style: none;
+			padding: 10px 20px;
+			text-align: center;
+			margin: 0 10px 10px 0;
+			border: 1px solid #e5e5e5;
+			@include transition-duration(500ms);
+			@include border-radius(2px);
+
+			dt, dd {
+				display: block;
+				width: 100%;
+			}
+
+			dt {
+				position: absolute;
+				bottom: 10px;
+				left: 0;
+				font-size: 0.8rem;
+				line-height: 0.8rem;
+				color: $lt-k;
+			}
+
+			dd {
+				margin-left: 0;
+				font-size: 2rem;
+				line-height: 2rem;
+				padding-bottom: 20px;
+				color: lighten($green, 10%);
+				text-align: center;
+				@include transition-property(color);
+				@include transition-duration(500ms);
+			}
+
+			.manipulator {
+				display: none;
+				position: absolute;
+				top: calc(-1rem + -35px);
+				margin-left: -60px;
+				z-index: 100;
+				white-space: nowrap;
+
+				.button {
+					font-size: 1rem;
+					display: inline-block;
+					@include box-shadow(rgba(0, 0, 0, 0.3) 1px 1px 5px);
+				}
+			}
+
+			.manipulator:after {
+				content: '{';
+				color: $med-k;
+				font-size: 3rem;
+				display: block;
+				margin-top: -5px;
+				@include rotate(-90deg);
+				@include text-shadow(rgba(0, 0, 0, 0.3) -1px 1px 5px);
+			}
+		}
+
+		dl.single_roll:hover, dl.single_roll.on {
+			cursor: pointer;
+			border: 1px solid #ccc;
+		}
+
+		dl.single_roll:hover dd, dl.single_roll.on dd {
+			color: $green;
+		}
+
+		dl.modifier dd {
+			color: lighten($orange, 10%);
+		}
+
+		dl.modifier:hover dd, dl.modifier.on dd {
+			color: $orange;
+		}
+	}
+
+	.result_breakdown {
+		display: table-cell;
+		width: 100%;
+		padding: 10px;
+		vertical-align: middle;
+		border-left: 1px solid #D3D3D3;
+
+			.instructions {
+				margin-top: -5px;
+				margin-bottom: 5px;
+				display: block;
+				clear: both;
+				font-size: 0.8rem;
+				color: $lt-k;
+				text-align: center;
+			}
+	}
+
+	footer {
+		font-size: 0.9rem;
+		padding: 5px 10px;
+		border-top: 1px solid #ccc;
+	}
+}
+
+#interface {
+	position: fixed;
+	top: 63px;
+	left: 20px;
+	margin-right: 20px;
+
+	form {
+		@include pie-clearfix;
+		display: block;
+		@include widget;
+		padding: 10px;
+
+		background-color: #f4f4f4;
+
+		textarea {
+			@include border-radius(2px);
+			@include background-image(linear-gradient(#f6f6f6, #fff 30%));
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 10px;
+			border-color: #D3D3D3;
+			border-width: 2px 1px 1px 2px;
+			@include transition-duration(500ms) ;
+			opacity: 0.8;
+		}
+
+		textarea:focus {
+			border-color: #c1c1c1;
+			outline: 0;
+			opacity: 1;
+		}
+
+		a.button {
+			float: right;
+			font-size: 1.2rem;
+		}
+	}
+}
+
+#instructions {
+	padding: 10px;
+	font-size: .9rem;
+
+	.helplink {
+		text-align: right;
+	}
+}
+
+#results {
+	float: right;
+	margin-top: 2.3rem;
 }

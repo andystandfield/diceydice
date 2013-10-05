@@ -2,7 +2,6 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="chrome=1">
 		<meta name="description" content="A dice rolling app." />
 		<meta name="keywords" content="dice, rpgs, roll playing, utilities, polyhedral, die roller" />
 		<meta name="author" content="Andy Standfield" />
@@ -11,15 +10,15 @@
 		DiceyDice
 		</title>
 
-		<link rel="shortcut icon" href="" />
+		<link rel="shortcut icon" href="favicon.ico" />
 
 		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
 
-		<link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Ultra|Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
 
-		<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+		<link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 		
-		<link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+		<link href="stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
 
 		<!--[if IE]>
 	    	<link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -31,23 +30,92 @@
 	</head>
 
 	<body>
-		<div id="mainstage">
+		<div id="wrapper">
 			<header>
 				<h1>DiceyDice!</h1>
 			</header>
-			<form id="interface" method="post" action="">
-				<input type="text" name="query" placeholder="3d6, 1d20+2, 1d100, 4df, 1d10x4, etc." value="" />
-				<button>Roll</button>
-			</form>
-			<div id="output">
-				<section id="insturction">
-					<h1>Instructions</h1>
-					<p>Just enter a standard die formula. Seperate rolls with a comma (e.g. 3d6+2, 1d8+1). If you want multiple rolls of the same kind, use 'x' (e.g. 3d6x6).</p>
+			<div id="mainstage">
+				<section id="interface">
+					<form>
+						<textarea tabindex="1" name="formula" rows="4" cols="40" id="formula" placeholder="3d6, 1d20+2, 1d100, 4df, 1d10x4, etc."></textarea>
+						<a href="" class="button roll" tabindex="2">Roll</a>
+					</form>
+					<div id="instructions">
+						<h2>Instructions</h2>
+						<p>Just enter a standard die formula. Seperate rolls with a comma <span class="example">(e.g. 3d6+2, 1d8+1)</span>. If you want multiple rolls of the same kind, use 'x' <span class="example">(e.g. 3d6x6)</span>. You can add title to a roll by typing it in square brackets <span class="example">(e.g. [Bob's attack roll])</span>, and add notes between quotes <span class="example">(e.g. "Long sword +1")</span>.</p>
+
+						<h3>Example:</h3>
+						<blockquote class="demo">
+							[Bob's damge roll] 2d6+1 "Greghor's almighty hammer of justice!", [Aurora's damage] 1d8+2, 3d6
+							<div>
+								<a href="" class="button">Try It</a>
+							</div>
+						</blockquote>
+						<div class="helplink"><a href="#help">More info and help</a></div>
+					</div>
 				</section>
 				<section id="results">
-					<h1>ResultyZults:</h1>
+					<h1>Results:</h1>
+
+					<div class="roll_result">
+						<h2>Bob's Attack Roll</h2>
+						<div class="result_body">
+							<dl class="sum">
+								<dt>3d6+2</dt>
+								<dd>14</dd>
+							</dl>
+							<div class="result_breakdown">
+								<div class="instructions">Select an individual result to manipulate the roll.</div>
+								<div>
+									<dl class="single_roll">
+										<dt>d6</dt>
+										<dd>
+											4
+											<div class="manipulator">
+												<div class="button delete">Delete</div>
+												<div class="button reroll">Re-roll</div>
+											</div>
+										</dd>
+									</dl>
+									<dl class="single_roll">
+										<dt>d6</dt>
+										<dd>4
+											<div class="manipulator">
+												<div class="button delete">Delete</div>
+												<div class="button reroll">Re-roll</div>
+											</div>
+										</dd>
+									</dl>
+										
+									<dl class="single_roll">
+										<dt>d6</dt>
+										<dd>100
+											<div class="manipulator">
+												<div class="button delete">Delete</div>
+												<div class="button reroll">Re-roll</div>
+											</div>
+										</dd>
+									</dl>
+										
+									<dl class="single_roll modifier">
+										<dt>modifier</dt>
+										<dd>+2
+											<div class="manipulator">
+												<div class="button delete">Delete</div>
+												<div class="button reroll">Edit</div>
+											</div>
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						<footer>Here is where all the notes will go.</footer>
+					</div>
+
 				</section>
-			</div>
-		</div>
+			</div><!-- #mainstage -->
+		</div><!-- #wrapper -->
+
+		<script type="text/javascript" src="js/custom.js"></script>
 	</body>
 </html>
