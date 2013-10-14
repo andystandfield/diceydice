@@ -75,8 +75,9 @@ body {
 
 #wrapper {
 	position: relative;
+	min-height: 580px;
+	height: 100%;
 	width: 100%;
-	min-height: 100%;
 	max-width: 1280px;
 	margin: 0 auto;
 	padding-bottom: 80px;
@@ -93,6 +94,7 @@ header {
 		font-size: 3rem;
 		line-height: 120%;
 		font-family: Ultra, sans-serif;
+		font-weight: normal;
 		margin: 0;
 		float: left;
 		@include text-shadow(none);
@@ -154,8 +156,15 @@ section {
 		font-weight: normal;
 	}
 
-	h2, h3, h4, h5, h6 {
+	h2 {
+		font-size: 1.2rem;
+	}
+
+	h3, h4, h5, h6 {
 		font-size: 1rem;
+	}
+
+	h2, h3, h4, h5, h6 {
 		margin-top: 0;
 		margin-bottom: 1em;
 	}
@@ -428,6 +437,10 @@ a:hover {
 #instructions {
 	padding: 10px;
 	font-size: .9rem;
+
+	h2 {
+		font-weight: normal;
+	}
 
 	h3 {
 		font-size: .9rem;
