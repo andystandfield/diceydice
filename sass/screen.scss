@@ -13,11 +13,12 @@
 $dark-k: #2c3135;
 $med-k: #4a5459;
 $lt-k: #A0ABB2;
-$red: #E26A58;
-$dark-red: #D5645A;
+$red: #FE3554;
+$dark-red: darken($red, 15%);
 $orange: #FFA02F;
 $green: #47A447;
 $blue: #00AFD8;
+$dark-blue: darken($blue, 10%);
 
 /* Mix-ins */
 
@@ -30,19 +31,43 @@ $blue: #00AFD8;
 	margin-bottom: 20px;
 }
 
+
+
+
 /* Begin My Styles */
 
-* { box-sizing: border-box }
+@viewport{
+    zoom: 1.0;
+    width: extend-to-zoom;
+}
+
+@-ms-viewport{
+    width: extend-to-zoom;
+    zoom: 1.0;
+}
+
+* {
+margin: 0;
+}
+html, body {
+
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
 
 html {
 	font-size: 16px;
+	height: 100%;
 }
 
 body {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans', 'Lucida Grande', Helvetica, sans-serif;
 	color: #4a5459;
 	background-color: #F3F2EF;
-	// background-image: url(../images/texture.png);
+	height: 100%;
 	padding: 20px;
 	margin-bottom: 50px;
 	@include text-shadow(#fff 0px 1px 0);
@@ -51,8 +76,10 @@ body {
 #wrapper {
 	position: relative;
 	width: 100%;
+	min-height: 100%;
 	max-width: 1280px;
 	margin: 0 auto;
+	padding-bottom: 80px;
 }
 
 header {
@@ -64,15 +91,58 @@ header {
 	h1 {
 		color: $dark-k;
 		font-size: 3rem;
+		line-height: 120%;
 		font-family: Ultra, sans-serif;
 		margin: 0;
+		float: left;
 		@include text-shadow(none);
+	}
+
+	#logo {
+		float: left;
+		width: 60px;
+		height: 60px;
+
+		#svg_logo {
+			width: 100%;
+			height: 100%;
+		}
 	}
 }
 
 #mainstage {
 	position: relative;
 	@include pie-clearfix;
+}
+
+#wrapper > footer {
+	position: absolute;
+	bottom: 40px;
+	right: 5px;
+	font-size: .8rem;
+	text-align: right;
+
+	span {
+		font-family: Ultra, sans-serif;
+		color: $dark-k;
+		border: 1px solid transparent;
+		@include transition-property(all);
+		@include transition-duration(500ms);
+	}
+
+	a {
+		color: $med-k;
+	}
+
+	a:hover {
+		text-decoration: none;
+	}
+}
+
+#wrapper > footer:hover span {
+	font-family: Ultra, sans-serif;
+	color: $red;
+	border-bottom: 1px dotted $red;
 }
 
 section {
@@ -87,11 +157,17 @@ section {
 	h2, h3, h4, h5, h6 {
 		font-size: 1rem;
 		margin-top: 0;
+		margin-bottom: 1em;
 	}
 
 	h3 {
 		font-weight: normal;
 	}
+}
+
+p {
+	line-height: 1.35em;
+	margin-bottom: 1em;
 }
 
 a {
@@ -100,7 +176,7 @@ a {
 }
 
 a:hover {
-	color: darken($blue, 10%);
+	color: $dark-blue;
 	text-decoration: underline;
 }
 
@@ -132,8 +208,13 @@ a:hover {
 
 .demo {
 	background-color: #fff;
-	font-family: monospace;
+	font-family: 'Ubuntu Mono',monospace;
+	text-shadow: none;
+	line-height: 1.5em;
 	padding: 10px;
+	margin-bottom: 1em;
+	margin-left: 20px;
+	margin-right: 20px;
 	border: 1px solid #ccc;
 	@include border-radius(3px);
 
@@ -307,7 +388,7 @@ a:hover {
 
 #interface {
 	position: fixed;
-	top: 63px;
+	top: 62px;
 	left: 20px;
 	margin-right: 20px;
 
@@ -348,6 +429,11 @@ a:hover {
 	padding: 10px;
 	font-size: .9rem;
 
+	h3 {
+		font-size: .9rem;
+		font-weight: bold;
+	}
+
 	.helplink {
 		text-align: right;
 	}
@@ -355,5 +441,5 @@ a:hover {
 
 #results {
 	float: right;
-	margin-top: 2.3rem;
+	margin-top: 40px;
 }
