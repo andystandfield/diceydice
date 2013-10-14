@@ -320,7 +320,7 @@ a:hover {
 				font-size: 2rem;
 				line-height: 2rem;
 				padding-bottom: 20px;
-				color: lighten($green, 10%);
+				color: $green;
 				text-align: center;
 				@include transition-property(color);
 				@include transition-duration(500ms);
@@ -354,19 +354,19 @@ a:hover {
 
 		dl.single_roll:hover, dl.single_roll.on {
 			cursor: pointer;
-			border: 1px solid #ccc;
+			border: 1px solid rgba( $blue, .3 );
 		}
 
 		dl.single_roll:hover dd, dl.single_roll.on dd {
-			color: $green;
+			color: lighten($green, 10%);
 		}
 
 		dl.modifier dd {
-			color: lighten($orange, 10%);
+			color: $orange;
 		}
 
 		dl.modifier:hover dd, dl.modifier.on dd {
-			color: $orange;
+			color: lighten($orange, 10%);
 		}
 	}
 

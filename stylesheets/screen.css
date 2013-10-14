@@ -769,7 +769,7 @@ a:hover {
   font-size: 2rem;
   line-height: 2rem;
   padding-bottom: 20px;
-  color: #63bb63;
+  color: #47a447;
   text-align: center;
   -webkit-transition-property: color;
   -moz-transition-property: color;
@@ -814,19 +814,19 @@ a:hover {
 /* line 355, ../sass/screen.scss */
 .roll_result .result_body dl.single_roll:hover, .roll_result .result_body dl.single_roll.on {
   cursor: pointer;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 175, 216, 0.3);
 }
 /* line 360, ../sass/screen.scss */
 .roll_result .result_body dl.single_roll:hover dd, .roll_result .result_body dl.single_roll.on dd {
-  color: #47a447;
+  color: #63bb63;
 }
 /* line 364, ../sass/screen.scss */
 .roll_result .result_body dl.modifier dd {
-  color: #ffb762;
+  color: #ffa02f;
 }
 /* line 368, ../sass/screen.scss */
 .roll_result .result_body dl.modifier:hover dd, .roll_result .result_body dl.modifier.on dd {
-  color: #ffa02f;
+  color: #ffb762;
 }
 /* line 373, ../sass/screen.scss */
 .roll_result .result_breakdown {
