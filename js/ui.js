@@ -21,4 +21,11 @@ $(document).ready(function(){
 		}
 	});
 
+	$('.close_btn').click(function() {
+		event.preventDefault();
+		$('#instructions').slideUp();
+	});
+
+	//
+
 });

@@ -10,6 +10,7 @@
 
 /* Variables */
 
+$background: #F3F2EF;
 $dark-k: #2c3135;
 $med-k: #4a5459;
 $lt-k: #A0ABB2;
@@ -33,7 +34,7 @@ $dark-blue: darken($blue, 10%);
 
 
 
-
+/* Begin My Styles */
 /* Begin My Styles */
 
 @viewport{
@@ -59,8 +60,8 @@ body {
 	position: relative;
 	font-family: 'Source Sans', 'Lucida Grande', Helvetica, sans-serif;
 	color: #4a5459;
-	background-color: #F3F2EF;
-	padding: 20px;
+	background-color: $background;
+	padding: 210px 20px 300px 20px;
 	margin-bottom: 50px;
 	@include text-shadow(#fff 0px 1px 0);
 }
@@ -73,10 +74,15 @@ body {
 }
 
 header {
+
+	@include pie-clearfix;
+
 	position: fixed;
-	top: 12px;
-	left: 30px;
-	z-index: 10;
+	top: 0;
+	left: 0;
+	z-index: 110;
+	width: 100%;
+	padding: 12px 20px;
 
 	h1 {
 		color: $dark-k;
@@ -136,7 +142,8 @@ footer:hover span {
 }
 
 section {
-	width: calc(50% - 20px);
+
+	margin-bottom: 20px;
 
 	h1 {
 		font-size: 1.5rem;
@@ -388,17 +395,21 @@ a:hover {
 }
 
 #interface {
+
 	position: fixed;
-	top: 62px;
-	left: 20px;
-	margin-right: 20px;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	padding: 62px 20px 0px 20px;
+	background-color: $background;
 
 	form {
 		@include pie-clearfix;
 		display: block;
 		@include widget;
 		padding: 10px;
-
+		margin: 0;
 		background-color: #f4f4f4;
 
 		input#formula {
@@ -427,7 +438,8 @@ a:hover {
 }
 
 #instructions {
-	padding: 10px;
+	position: relative;
+
 	font-size: .9rem;
 
 	h2 {
@@ -441,10 +453,41 @@ a:hover {
 
 	.helplink {
 		text-align: right;
+		margin-bottom: 1rem;
 	}
 }
 
-#results {
-	float: right;
-	margin-top: 40px;
+
+
+
+
+
+
+@media (min-width: 959px) {
+
+	body {
+		padding: 20px;
+	}
+
+	header, section {
+		width: calc(50% - 20px);
+	}
+
+	#instructions {
+		position: fixed;
+		top: 200px;
+	}
+
+	#interface {
+		padding-right: 0;
+		width: 50%;
+	}
+
+	#results {
+		float: right;
+		margin-top: 40px;
+	}
 }
+
+
+
